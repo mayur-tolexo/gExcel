@@ -1,0 +1,35 @@
+{
+	"ImportPath": "github.com/mayur-tolexo/gExcel",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v80",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/gorilla/websocket",
+			"Comment": "v1.4.0-12-g80c2d40",
+			"Rev": "80c2d40e9b91f2ef7a9c1a403aeec64d1b89a9a6"
+		},
+		{
+			"ImportPath": "github.com/lucasb-eyer/go-colorful",
+			"Comment": "v1.0.2",
+			"Rev": "30298f24079860c4dee452fdef6519b362a4a026"
+		},
+		{
+			"ImportPath": "github.com/tidwall/gjson",
+			"Comment": "v1.2.1-3-g40764d5",
+			"Rev": "40764d5d5686a9c15b836e8b30ee20ac14f998ae"
+		},
+		{
+			"ImportPath": "github.com/tidwall/match",
+			"Comment": "v1.0.1",
+			"Rev": "33827db735fff6510490d69a8622612558a557ed"
+		},
+		{
+			"ImportPath": "github.com/tidwall/pretty",
+			"Comment": "v1.0.0",
+			"Rev": "1166b9ac2b65e46a43d8618d30d1554f4652d49b"
+		}
+	]
+}
