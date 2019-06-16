@@ -19,18 +19,20 @@ type User struct {
 }
 
 type Connected struct {
-	UserID int    `json:"userId"`
-	Kind   int    `json:"kind"`
-	Color  string `json:"color"`
-	Users  []User `json:"users"`
+	UserID int              `json:"userId"`
+	Kind   int              `json:"kind"`
+	Color  string           `json:"color"`
+	Users  []User           `json:"users"`
+	Msg    map[string]EData `json:"msg"`
 }
 
-func NewConnected(userID int, color string, users []User) *Connected {
+func NewConnected(userID int, color string, users []User, msg map[string]EData) *Connected {
 	return &Connected{
 		UserID: userID,
 		Kind:   KindConnected,
 		Color:  color,
 		Users:  users,
+		Msg:    msg,
 	}
 }
 

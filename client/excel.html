@@ -64,13 +64,20 @@ function onMessage(message) {
       for (var i = 0; i < message.users.length; i++) {
         var user = message.users[i];
         otherColors[user.id] = user.color;
-        otherDatas[user.id] = [];
       }
       curUserId = message.userId;
+      if (typeof message.msg !== 'undefined'){
+        var msgs = Object.keys(message.msg);
+        for (var i = 0; i < msgs.length; i++) {
+            var id = msgs[i];
+            var element = message.msg[id];
+            eDatas[element.Id] = element.value;
+        }
+        update();
+      }
       break;
     case MESSAGE_USER_JOINED:
       otherColors[message.user.id] = message.user.color;
-      otherDatas[message.user.id] = [];
       break;
     case MESSAGE_USER_LEFT:
       delete otherColors[message.userId];

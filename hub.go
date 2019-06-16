@@ -11,8 +11,14 @@ import (
 	"github.com/tidwall/gjson"
 )
 
+var messages map[string]message.EData
+
 var upgrader = websocket.Upgrader{
 	CheckOrigin: func(r *http.Request) bool { return true },
+}
+
+func init() {
+	messages = make(map[string]message.EData)
 }
 
 type Hub struct {
@@ -87,7 +93,7 @@ func (hub *Hub) onConnect(client *Client) {
 	}
 
 	// Notify that a user joined
-	hub.send(message.NewConnected(client.id, client.color, users), client)
+	hub.send(message.NewConnected(client.id, client.color, users, messages), client)
 	hub.broadcast(message.NewUserJoined(client.id, client.color), client)
 }
 
@@ -123,6 +129,9 @@ func (hub *Hub) onMessage(data []byte, client *Client) {
 			return
 		}
 		msg.UserID = client.id
+		for _, curMsg := range msg.EDatas {
+			messages[curMsg.ID] = curMsg
+		}
 		hub.broadcast(msg, client)
 	} else {
 		var msg message.Clear
